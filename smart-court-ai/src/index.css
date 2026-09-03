@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --court-navy: #0B192C;
+    --court-navy-dark: #070F1E;
+    --court-gold: #CA8A04;
+    --court-gold-light: #FEF08A;
+    --court-bg: #F8FAFC;
+    --court-card: #FFFFFF;
+    --court-border: #E2E8F0;
+  }
+
+  body {
+    background-color: var(--court-bg);
+    color: #1E293B;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Scrollbar for Legal Data Grids */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #F1F5F9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #CBD5E1;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94A3B8;
+}
+
+/* Institutional Seal Watermark */
+.court-seal-bg {
+  background-image: radial-gradient(circle at 50% 50%, rgba(202, 138, 4, 0.03) 0%, transparent 60%);
+}
+
+/* Redaction Highlighter */
+.redacted-box {
+  background-color: #0F172A;
+  color: #0F172A;
+  border-radius: 2px;
+  user-select: none;
+  transition: all 0.2s ease;
+}
+
+.redacted-box.revealed {
+  background-color: rgba(239, 68, 68, 0.15);
+  color: #991B1B;
+  border-bottom: 2px dashed #DC2626;
+}
+
+/* Pulse animation for high-priority live hearings */
+@keyframes urgent-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.03);
+  }
+}
+
+.animate-urgent-pulse {
+  animation: urgent-pulse 2s infinite ease-in-out;
+}
+
+/* Print Styles for Court Orders & Cause Lists */
+@media print {
+  aside, header, nav, .no-print {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+    color: black !important;
+  }
+  .printable-area {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+}
